@@ -1,0 +1,101 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.leo.githubstars.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingTop="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/ivThumbnail"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:loadImage="@{viewModel.userData.avatarUrl}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tvloginId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/SH1_BM_01"
+            android:inputType="textMultiLine"
+            android:text="@{`Login Id\n` + viewModel.userData.login}"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toTopOf="@+id/ivThumbnail"
+            app:layout_constraintStart_toEndOf="@+id/ivThumbnail"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userData.name==null ? `User Name:` : `User Name: ` + viewModel.userData.name}"
+            style="@style/SH1_BM_01"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/ivThumbnail"
+            app:layout_constraintStart_toStartOf="@+id/ivThumbnail"
+            />
+
+        <TextView
+            android:id="@+id/tvCreated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userData.created_at==null ? `Created Data:` : `Created Data: ` + viewModel.userData.created_at}"
+            style="@style/SH1_BM_01"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            app:layout_constraintStart_toStartOf="@+id/ivThumbnail"
+            />
+
+        <TextView
+            android:id="@+id/tvFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Followers: ` + viewModel.userData.followers}"
+            style="@style/SH1_BM_01"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvCreated"
+            app:layout_constraintStart_toStartOf="@+id/ivThumbnail"
+            />
+
+        <TextView
+            android:id="@+id/tvFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Followers: ` + viewModel.userData.following}"
+            style="@style/SH1_BM_01"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvFollowers"
+            app:layout_constraintStart_toStartOf="@+id/ivThumbnail"
+            />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userData.email==null ? `Email Address:` : `Email Address: ` + viewModel.userData.email}"
+            style="@style/SH1_BM_01"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvFollowing"
+            app:layout_constraintStart_toStartOf="@+id/ivThumbnail"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
